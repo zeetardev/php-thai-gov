@@ -7,15 +7,14 @@ class ThaiGov
     
     public static function genIdCard(): ?string
     {
-        $head = null;
+        $digits = '';
         $sum = 0;
         for ($i = 0; $i < 12; $i++ ) {
-            $pos = abs($i + (-13));
-            $digits = rand(0, 9);
-            $head .= $digits;
-            $sum += ($pos * $digits);
+            $num = rand(0, 9);
+            $digits .= $num;
+            $sum += (abs($i + (-13)) * $num);
         }
-        return $head.strval((11 - $sum % 11) % 10);
+        return $digits.strval((11 - $sum % 11) % 10);
     }
 
     public static function checkIdCard(string $value = null): ?bool
