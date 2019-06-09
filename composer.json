@@ -1,0 +1,20 @@
+{
+    "name": "zeetar/thai-gov",
+    "description": "A simple library to random the Thai identity card and more in PHP.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Noravee Srilatlao",
+            "email": "zeetar.developer@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ThaiGov\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
