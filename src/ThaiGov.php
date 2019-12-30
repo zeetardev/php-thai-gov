@@ -100,13 +100,4 @@ class ThaiGov
         return $year + 543;
     }
 
-    // Get address information by a postcode
-    public function getAddressByPostcode(string $postcode): array
-    {
-        // ... 
-        // ... 
-        // ... 
-        return [];
-    }
-
 }
