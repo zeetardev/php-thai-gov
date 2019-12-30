@@ -24,16 +24,18 @@ class ThaiGov
     }
 
     // Random a phone number
-    public function genPhoneNumber(string $type = 'M'): string 
+    public static function genPhoneNumber(string $type = 'M'): string 
     {
         $number = '0';
         if ($type == 'M') {
-            for ($i = 0; $i < 9; $i++) {
-                $number.= ($i == 0) ? self::MOBILE[rand(0, sizeof(self::POTS) - 1)] : rand(0, 9);
+            $number.= self::MOBILE[rand(0, (sizeof(self::MOBILE) - 1))];
+            for ($i = 0; $i < 8; $i++) {
+                $number.= rand(0, 9);
             }
         } else {
-            for ($i = 0; $i < 8; $i++) {
-                $number.= ($i == 0) ? self::POTS[rand(0, sizeof(self::POTS) - 1)] : rand(0, 9);
+            $number.= self::POTS[rand(0, (sizeof(self::POTS) - 1))];
+            for ($i = 0; $i < 7; $i++) {
+                $number.= rand(0, 9);
             }
         }
         return $number;
