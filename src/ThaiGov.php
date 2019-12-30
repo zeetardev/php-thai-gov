@@ -52,17 +52,4 @@ class ThaiGov
         return $digits.strval((11 - $sum % 11) % 10);
     }
 
-    public static function checkIdCard(string $value = null): ?bool
-    {
-        if (strlen($value) != 13 || is_null($value)) {
-            return false;
-        }
-        $digits = str_split($value);
-        $tail = array_pop($digits);
-        $sum = array_sum(array_map(function ($x, $y) { 
-            return ($y + 2) * $x; 
-        }, array_reverse($digits), array_keys($digits)));
-        return $tail === strval((11 - $sum % 11) % 10);
-    }
-
 }
