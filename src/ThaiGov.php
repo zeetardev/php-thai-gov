@@ -9,6 +9,20 @@ class ThaiGov
     const POTS = ['2', '3', '4', '5', '7'];
     const MOBILE = ['6', '8', '9'];
 
+    // Thai number
+    const NUMBER = [
+        '0' => '๐',
+        '1' => '๑',
+        '2' => '๒',
+        '3' => '๓',
+        '4' => '๔',
+        '5' => '๕',
+        '6' => '๖',
+        '7' => '๗',
+        '8' => '๘',
+        '9' => '๙',
+    ];
+
     // Checking an ID card
     public static function checkIdCard(string $value = null): bool
     {
@@ -51,6 +65,20 @@ class ThaiGov
             $sum += (abs($i + (-13)) * $num);
         }
         return $digits.strval((11 - $sum % 11) % 10);
+    }
+
+    public static function thaiNum(string $number): string
+    {
+        $str = null;
+        for ($i = 0; $i < strlen($number); $i++) { 
+            $str.= self::NUMBER[$number[$i]];
+        }
+        return $str;
+    }
+
+    public static function toBeYear(int $year): int 
+    {
+        return $year + 543;
     }
 
 }
