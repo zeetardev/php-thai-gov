@@ -9,7 +9,7 @@ class ThaiGov
     const POTS = ['2', '3', '4', '5', '7'];
     const MOBILE = ['6', '8', '9'];
 
-    // Thai number
+    // Thai numbers
     const NUMBER = [
         '0' => '๐',
         '1' => '๑',
@@ -21,6 +21,17 @@ class ThaiGov
         '7' => '๗',
         '8' => '๘',
         '9' => '๙',
+    ];
+
+    // Thai days 
+    const DAY = [
+        'monday' => 'จันทร์',
+        'tuesday' => 'อังคาร',
+        'wednesday' => 'พุธ',
+        'thursday' => 'พฤหัสบดี',
+        'friday' => 'ศุกร์',
+        'saturday' => 'เสาร์',
+        'sunday' => 'อาทิตย์',
     ];
 
     // Checking an ID card
@@ -75,6 +86,12 @@ class ThaiGov
             $str.= self::NUMBER[$number[$i]];
         }
         return $str;
+    }
+
+    // Convert to Thai day
+    public static function thaiDay(string $day): string 
+    {
+        return self::DAY[strtolower($day)];
     }
 
     // Convert to Buddhist year
