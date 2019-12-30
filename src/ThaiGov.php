@@ -4,8 +4,43 @@ namespace ThaiGov;
 
 class ThaiGov 
 {
-    
-    public static function genIdCard(): ?string
+
+    // Phone number code
+    const POTS = ['2', '3', '4', '5', '7'];
+    const MOBILE = ['6', '8', '9'];
+
+    // Checking an ID card
+    public static function checkIdCard(string $value = null): bool
+    {
+        if (strlen($value) != 13 || is_null($value)) {
+            return false;
+        }
+        $digits = str_split($value);
+        $tail = array_pop($digits);
+        $sum = array_sum(array_map(function ($x, $y) { 
+            return ($y + 2) * $x; 
+        }, array_reverse($digits), array_keys($digits)));
+        return $tail === strval((11 - $sum % 11) % 10);
+    }
+
+    // Random a phone number
+    public function genPhoneNumber(string $type = 'M'): string 
+    {
+        $number = '0';
+        if ($type == 'M') {
+            for ($i = 0; $i < 9; $i++) {
+                $number.= ($i == 0) ? self::MOBILE[rand(0, sizeof(self::POTS) - 1)] : rand(0, 9);
+            }
+        } else {
+            for ($i = 0; $i < 8; $i++) {
+                $number.= ($i == 0) ? self::POTS[rand(0, sizeof(self::POTS) - 1)] : rand(0, 9);
+            }
+        }
+        return $number;
+    }
+
+    // Random an ID card
+    public static function genIdCard(): string
     {
         $digits = '';
         $sum = 0;
