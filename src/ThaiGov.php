@@ -29,14 +29,13 @@ class ThaiGov
         $number = '0';
         if ($type == 'M') {
             $number.= self::MOBILE[rand(0, (sizeof(self::MOBILE) - 1))];
-            for ($i = 0; $i < 8; $i++) {
-                $number.= rand(0, 9);
-            }
+            $digits = 8;
         } else {
             $number.= self::POTS[rand(0, (sizeof(self::POTS) - 1))];
-            for ($i = 0; $i < 7; $i++) {
-                $number.= rand(0, 9);
-            }
+            $digits = 7;
+        }
+        for ($i = 0; $i < $digits; $i++) {
+            $number.= rand(0, 9);
         }
         return $number;
     }
