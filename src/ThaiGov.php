@@ -67,6 +67,7 @@ class ThaiGov
         return $digits.strval((11 - $sum % 11) % 10);
     }
 
+    // Convert to Thai number as a string
     public static function thaiNum(string $number): string
     {
         $str = null;
@@ -76,9 +77,19 @@ class ThaiGov
         return $str;
     }
 
+    // Convert to Buddhist year
     public static function toBeYear(int $year): int 
     {
         return $year + 543;
+    }
+
+    // Get address information by a postcode
+    public function getAddressByPostcode(string $postcode): array
+    {
+        // ... 
+        // ... 
+        // ... 
+        return [];
     }
 
 }
