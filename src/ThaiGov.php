@@ -117,7 +117,7 @@ class ThaiGov
     }
 
     // Convert to Buddhist year
-    public static function toBeYear(int $year): int 
+    public static function beYear(int $year): int 
     {
         return $year + 543;
     }
