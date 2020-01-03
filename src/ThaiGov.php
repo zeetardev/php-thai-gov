@@ -111,9 +111,9 @@ class ThaiGov
     }
 
     // Convert to Thai month
-    public static function thaiMonth(string $month): string 
-    {
-        return self::MONTH[strtolower($month)];
+    public static function thaiMonth(int $month): string 
+    {        
+        return self::MONTH[str_pad((string) $month, 2, '0', STR_PAD_LEFT)];
     }
 
     // Convert to Buddhist year
